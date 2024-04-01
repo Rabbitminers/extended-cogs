@@ -39,11 +39,12 @@ repositories {
     // mavens for Fabric-exclusives
     maven { url = "https://api.modrinth.com/maven" } // LazyDFU
     maven { url = "https://maven.terraformersmc.com/releases/" } // Mod Menu
-    maven { url = "https://mvn.devos.one/snapshots/" } // Create Fabric, Porting Lib, Forge Tags, Milk Lib, Registrate Fabric
+    maven { url = "https://mvn.devos.one/snapshots/" }
+    // Create Fabric, Porting Lib, Forge Tags, Milk Lib, Registrate Fabric
     maven { url = "https://cursemaven.com" } // Forge Config API Port
     maven { url = "https://maven.cafeteria.dev/releases" } // Fake Player API
     maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
-    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM
+    maven { url = "https://jitpack.io/" } // Mixin Extras, Fabric ASM,
 }
 
 configurations.configureEach {
@@ -58,6 +59,10 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:${fabric_loader_version}")
     common(project(path: ":common", configuration: "namedElements")) { transitive = false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive = false }
+
+    // Should be being added transitively but for whatever reason isn't
+    // todo: look into this or open pr
+    modImplementation("net.minecraftforge:forgeconfigapiport-fabric:4.2.9")
 
     // dependencies
     modImplementation("net.fabricmc.fabric-api:fabric-api:${fabric_api_version}")
@@ -135,7 +140,7 @@ remapJar {
 jar {
     archiveClassifier = "dev"
 
-    String gitHash =  "\"${getGitHash()}" + (hasUnstaged() ? "-modified" : "") + "\""
+    String gitHash = "\"${getGitHash()}" + (hasUnstaged() ? "-modified" : "") + "\""
 
     manifest {
         attributes([
@@ -149,7 +154,7 @@ sourcesJar {
     dependsOn commonSources
     from commonSources.archiveFile.map { zipTree(it) }
 
-    String gitHash =  "\"${getGitHash()}" + (hasUnstaged() ? "-modified" : "") + "\""
+    String gitHash = "\"${getGitHash()}" + (hasUnstaged() ? "-modified" : "") + "\""
 
     manifest {
         attributes([

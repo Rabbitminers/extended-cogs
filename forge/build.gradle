@@ -133,7 +133,7 @@ jar {
 
     manifest {
         attributes([
-            "Git-Hash": gitHash
+                "Git-Hash": gitHash
         ])
     }
 }
@@ -143,11 +143,11 @@ sourcesJar {
     dependsOn commonSources
     from commonSources.archiveFile.map { zipTree(it) }
 
-    String gitHash =  getFullGitHash();
+    String gitHash = getFullGitHash();
 
     manifest {
         attributes([
-            "Git-Hash": gitHash
+                "Git-Hash": gitHash
         ])
     }
 }
