@@ -8,6 +8,7 @@ import com.rabbitminers.extendedgears.registry.*;
 import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.LangMerger;
+import com.tterrag.registrate.providers.ProviderType;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -37,11 +38,11 @@ public class ExtendedCogwheels {
     }
 
     public static void gatherData(DataGenerator.PackGenerator gen) {
+        REGISTRATE.addDataGenerator(ProviderType.LANG, ExtendedCogwheelsLanguageProvider::generate);
+
         gen.addProvider(ExtendedCogwheelsStandardRecipeGen::new);
         gen.addProvider(ExtendedCogwheelsCuttingRecipeGen::new);
         gen.addProvider(ExtendedCogwheelsDeployingRecipeGen::new);
-        gen.addProvider((PackOutput output) -> ExtendedCogwheelsLanguageProvider
-                .createMerger(output, MOD_ID, "Extended Cogwheels", ExtendedCogwheelsLanguageProvider.values()));
     }
 
     @ExpectPlatform

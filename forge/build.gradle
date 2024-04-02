@@ -51,6 +51,7 @@ repositories {
         content {
             includeGroup("com.tterrag.registrate")
             includeGroup("com.simibubi.create")
+            includeGroup("com.jozufozu.flywheel")
         }
     }
     maven {

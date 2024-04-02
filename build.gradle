@@ -1,7 +1,6 @@
 plugins {
     id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.1.+" apply false
-    id "io.github.juuxel.loom-vineflower" version "1.+" apply false // Vineflower, a better decompiler
+    id "dev.architectury.loom" version "1.5.+" apply false
     id "me.modmuss50.mod-publish-plugin" version "0.3.4" apply false // https://github.com/modmuss50/mod-publish-plugin
 }
 
@@ -11,7 +10,6 @@ architectury {
 
 subprojects {
     apply plugin: "dev.architectury.loom"
-    apply plugin: "io.github.juuxel.loom-vineflower"
 
     loom {
         silentMojangMappingsLicense()
@@ -41,6 +39,8 @@ subprojects {
                 includeGroup("com.jozufozu.flywheel")
             }
         }
+        maven { url = "https://mvn.devos.one/releases" } // Porting Lib Releases
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge Config Api Port
     }
 
     dependencies {

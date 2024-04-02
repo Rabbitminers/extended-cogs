@@ -49,6 +49,6 @@ public class ExtendedCogwheelsCreativeModeTabsImpl {
     }
 
     public static void useBaseTab() {
-        ExtendedCogwheels.registrate().useCreativeTab(MAIN_TAB);
+        ExtendedCogwheels.registrate().setCreativeTab(MAIN_TAB);
     }
 }
