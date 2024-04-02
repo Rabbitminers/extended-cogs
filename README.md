@@ -22,7 +22,10 @@
 
 ### Datapack Integration
 
-(In Beta Testing) you are able to add new cogwheel materials through datapacks. You can find a guide on how to set up a datapack on the [Minecraft Wiki](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_data_pack). Once you have that set up under your namespace directory create a new directory called `cogwheels` which you can then add new materials to following this schema:
+(In Beta Testing) you are able to add new cogwheel materials through datapacks. You can find a guide on how to set up a
+datapack on the [Minecraft Wiki](https://minecraft.fandom.com/wiki/Tutorials/Creating_a_data_pack). Once you have that
+set up under your namespace directory create a new directory called `cogwheels` which you can then add new materials to
+following this schema:
 
 ```js
 {
@@ -59,18 +62,24 @@
 }
 ```
 
-And that's it you can now use your new cogwheels. If you want to add custom assets you can include them in KubeJS or a Resource Pack.
+And that's it you can now use your new cogwheels. If you want to add custom assets you can include them in KubeJS or a
+Resource Pack.
 
 ---
 
 ### KubeJS Integration (Deprecated)
+
 KubeJS support has been deprecated please use datapacks to add new cogwheels
 
-As of version 2.1 and above extended cogwheels has allows for you to create your own custom cogwheels easily with KubeJS (when both mods are present)
+As of version 2.1 and above extended cogwheels has allows for you to create your own custom cogwheels easily with
+KubeJS (when both mods are present)
 
-Cogwheels can now be created like any other block just specify the type and properties give it a texture and try it out in game
+Cogwheels can now be created like any other block just specify the type and properties give it a texture and try it out
+in game
 
-Example Adding A Small Cogwheel (Relevant texture files are placed in `/assets/kubjs/textures/block/example_cogwheel.png`)
+Example Adding A Small Cogwheel (Relevant texture files are placed
+in `/assets/kubjs/textures/block/example_cogwheel.png`)
+
 ```javascript
 // startup_scripts/demo.js
 onEvent('block.registry', event => {
@@ -79,7 +88,9 @@ onEvent('block.registry', event => {
 	    .displayName('Example Cogwheel');
 })
 ```
+
 Example Adding A Large Cogwheel
+
 ```javascript
 // startup_scripts/demo.js
 onEvent('block.registry', event => {
@@ -89,6 +100,16 @@ onEvent('block.registry', event => {
 })
 ```
 
-All Valid Variations Are `cogwheel`, `large_cogwheel`, `half_shaft_cogwheel`, `large_half_shaft_cogwheel`, `shaftless_cogwheel`, `large_shaftless_cogwheel` 
+All Valid Variations
+Are `cogwheel`, `large_cogwheel`, `half_shaft_cogwheel`, `large_half_shaft_cogwheel`, `shaftless_cogwheel`, `large_shaftless_cogwheel`
 
-Existing builder methods for blocks are all supported for cogwheels. You can find some documentation for that here - https://wiki.latvian.dev/books/kubejs-legacy/page/custom-blocks
+Existing builder methods for blocks are all supported for cogwheels. You can find some documentation for that
+here - https://wiki.latvian.dev/books/kubejs-legacy/page/custom-blocks
+
+### Licensing
+
+As of April 2024, Extended Cogwheels follows a dual license, the source code of Extended Cogwheels is licensed under the MIT license, see [license](./LICENSE) for more information.
+
+To protect the work of our artists, all rights are reserved for the assets in this repository (including but not limited to, textures, promotional images and logos). Modification or redistribution of assets beginning from the prior date is not permitted without explicit permission. See our [assets license](./LICENSE-ASSETS) for more information.
+
+If you have any questions or concerns about or licensing feel free to contact us.
