@@ -41,6 +41,7 @@ subprojects {
                 includeGroup("com.jozufozu.flywheel")
             }
         }
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // Forge config api
     }
 
     dependencies {
@@ -130,5 +131,6 @@ String getChangelogText(String loader, boolean recent) {
     }
     return str
 }
+
 new File("changelog.html").write getChangelogText("Fabric", false)
 new File("recent_changelog.html").write getChangelogText("Fabric", true)
