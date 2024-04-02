@@ -41,38 +41,51 @@ public class ShaftlessCogwheelBlock extends CogWheelBlock implements CogwheelTyp
     }
 
     @Override
-    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
-              InteractionHand hand, BlockHitResult ray) {
-        if (player.isShiftKeyDown() || !player.mayBuild())
+    public @NotNull InteractionResult use(@NotNull BlockState state, Level level, @NotNull BlockPos pos, Player player,
+                                          @NotNull InteractionHand hand, @NotNull BlockHitResult ray) {
+        if (player.isShiftKeyDown() || !player.mayBuild()) {
             return InteractionResult.PASS;
-        ItemStack heldItem = player.getItemInHand(hand);
-        if (heldItem.is(AllBlocks.SHAFT.get().asItem()) && !level.isClientSide) {
-            boolean isLarge = ICogWheel.isLargeCog(state);
-            BlockState newState = isLarge ? AllBlocks.LARGE_COGWHEEL.getDefaultState()
-                    : AllBlocks.COGWHEEL.getDefaultState();
-            newState = newState.setValue(AXIS, state.getValue(AXIS))
-                    .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
-            BlockEntity oldBe = level.getBlockEntity(pos);
-            if (!(oldBe instanceof IDynamicMaterialBlockEntity oldDyn))
-                return InteractionResult.FAIL;
-            ResourceLocation material = oldDyn.getMaterial();
-            level.setBlock(pos, newState, 3);
-            if (!player.isCreative())
-                heldItem.shrink(1);
-            BlockEntity be = level.getBlockEntity(pos);
-            if (!(be instanceof IDynamicMaterialBlockEntity newDyn))
-                return InteractionResult.FAIL;
-            newDyn.applyMaterial(material);
-            return InteractionResult.SUCCESS;
         }
-        return super.use(state, level, pos, player, hand, ray);
+
+        ItemStack heldItem = player.getItemInHand(hand);
+
+        if (level.isClientSide || !heldItem.is(AllBlocks.SHAFT.get().asItem())) {
+            return super.use(state, level, pos, player, hand, ray);
+        }
+
+        boolean isLarge = ICogWheel.isLargeCog(state);
+
+        BlockState newState = isLarge ? AllBlocks.LARGE_COGWHEEL.getDefaultState() : AllBlocks.COGWHEEL.getDefaultState();
+        newState = newState.setValue(AXIS, state.getValue(AXIS)).setValue(WATERLOGGED, state.getValue(WATERLOGGED));
+
+        BlockEntity oldBlockEntity = level.getBlockEntity(pos);
+        if (!(oldBlockEntity instanceof IDynamicMaterialBlockEntity oldMaterial)) {
+            return InteractionResult.FAIL;
+        }
+
+        ResourceLocation material = oldMaterial.getMaterial();
+        level.setBlock(pos, newState, 3);
+
+        if (!player.isCreative()) {
+            heldItem.shrink(1);
+        }
+
+        BlockEntity newBlockEntity = level.getBlockEntity(pos);
+        if (!(newBlockEntity instanceof IDynamicMaterialBlockEntity newMaterial)) {
+            return InteractionResult.FAIL;
+        }
+
+        newMaterial.applyMaterial(material);
+        return InteractionResult.SUCCESS;
     }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, @NotNull BlockGetter worldIn, @NotNull BlockPos pos,
                                         @NotNull CollisionContext context) {
-        if (!state.hasProperty(AXIS))
+        if (!state.hasProperty(AXIS)) {
             return super.getShape(state, worldIn, pos, context);
+        }
+
         return VoxelShaper.forAxis(isLargeCog() ? largeVoxelShape : voxelShape, Direction.Axis.Y).get(state.getValue(AXIS));
     }
 

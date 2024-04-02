@@ -1,4 +1,5 @@
 ## Localisations
+
 - en_us
 - en_uk
 - pl_pl - RBus
@@ -6,7 +7,7 @@
 - nl_nl - Siepart
 - ko_kr - AsseyGithub
 - zh_cn - Junnaturefox
-- pt_br - Makzzin 
+- pt_br - Makzzin
 - es_mx - IceBeam1
 - zh_tw - EvanHsieh0415
 - ru_ru - SuperRuper1209

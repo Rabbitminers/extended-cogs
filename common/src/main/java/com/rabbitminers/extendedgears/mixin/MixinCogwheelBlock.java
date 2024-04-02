@@ -30,8 +30,11 @@ public class MixinCogwheelBlock extends AbstractSimpleShaftBlock implements Cogw
     public void use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray,
                     CallbackInfoReturnable<InteractionResult> cir) {
         BlockEntity be = level.getBlockEntity(pos);
-        if (!(be instanceof IDynamicMaterialBlockEntity dyn) || level.isClientSide)
+
+        if (!(be instanceof IDynamicMaterialBlockEntity dyn) || level.isClientSide) {
             return;
+        }
+
         cir.setReturnValue(dyn.applyMaterialIfValid(player.getItemInHand(hand)));
     }
 
