@@ -1,0 +1,42 @@
+{
+  "team": [
+    {
+      "id": "7102222d-b551-46e6-b1cf-44a67a05aace",
+      "name": "Rabbitminers"
+    },
+    {
+      "id": "d926a62a-0ee9-4edb-a638-bbad14c3da49",
+      "name": "kurocat471"
+    }
+  ],
+  "translators": [
+    {
+      "id": "8e357546-86bb-4985-a97b-f90743477e78",
+      "name": "Itzz_Fabii_"
+    },
+    {
+      "id": "3a717427-6b02-4cbc-8307-68c6689ec4f2",
+      "name": "SveinTheSmurf"
+    },
+    {
+      "id": "4f72a7c8-7645-4491-8fe7-87853b650cad",
+      "name": "Stacode"
+    },
+    {
+      "id": "2338a880-a39d-4110-a3bc-76e8cff35453",
+      "name": "LAURENS10000"
+    },
+    {
+      "id": "5d120416-b42b-4bfe-b559-5070d9e8ac3e",
+      "name": "Coolensnor"
+    },
+    {
+      "id": "6d309734-fd10-416b-9377-f7cfb4b6c50f",
+      "name": "Jun_naturefox"
+    },
+    {
+      "id": "044f9f87-13ad-4d39-a4f0-4172be1aaf8f",
+      "name": "Makzzzin"
+    }
+  ]
+}
