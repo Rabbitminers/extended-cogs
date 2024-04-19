@@ -10,3 +10,4 @@
 - es_mx - IceBeam1
 - zh_tw - EvanHsieh0415
 - ru_ru - SuperRuper1209
+- sv_se - sudolev

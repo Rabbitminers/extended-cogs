@@ -1,0 +1,39 @@
+{
+  "itemGroup.extendedgears.main": "Extended Cogs",
+
+  "block.extendedgears.acacia_cogwheel": "Akaciakugghjul",
+  "block.extendedgears.large_acacia_cogwheel": "Stort akaciakugghjul",
+
+
+  "block.extendedgears.oak_cogwheel": "Ekkugghjul",
+  "block.extendedgears.large_oak_cogwheel": "Stort ekkugghjul",
+
+
+  "block.extendedgears.dark_oak_cogwheel": "Mörkt ekkugghjul",
+  "block.extendedgears.large_dark_oak_cogwheel": "Stort mörkt ekkugghjul",
+
+
+  "block.extendedgears.birch_cogwheel": "Björkkugghjul",
+  "block.extendedgears.large_birch_cogwheel": "Stort björkkugghjul",
+
+
+  "block.extendedgears.crimson_cogwheel": "Karmosinkugghjul",
+  "block.extendedgears.large_crimson_cogwheel": "Stort karmosinkugghjul",
+
+
+  "block.extendedgears.jungle_cogwheel": "Djungelkugghjul",
+  "block.extendedgears.large_jungle_cogwheel": "Stort djungelkugghjul",
+
+
+  "block.extendedgears.warped_cogwheel": "Förvrängt kugghjul",
+  "block.extendedgears.large_warped_cogwheel": "Stort förvrängt kugghjul",
+
+  "block.extendedgears.steel_cogwheel": "Stålkugghjul",
+  "block.extendedgears.large_steel_cogwheel": "Stort stålkugghjul",
+
+  "block.extendedgears.copper_cogwheel": "Kopparkugghjul",
+  "block.extendedgears.large_copper_cogwheel": "Stort kopparkugghjul",
+
+  "block.extendedgears.iron_cogwheel": "Järnkugghjul",
+  "block.extendedgears.large_iron_cogwheel": "Stort järnkugghjul"
+}
