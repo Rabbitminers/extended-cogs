@@ -2,7 +2,7 @@
   "type": "create:deploying",
   "ingredients": [
     {
-      "item": "create:shaft"
+      "item": "create:andesite_alloy"
     },
     {
       "tag": "minecraft:planks"

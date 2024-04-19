@@ -2,7 +2,7 @@
   "type": "create:deploying",
   "ingredients": [
     {
-      "item": "create:shaft"
+      "tag": "minecraft:buttons"
     },
     {
       "tag": "minecraft:planks"
