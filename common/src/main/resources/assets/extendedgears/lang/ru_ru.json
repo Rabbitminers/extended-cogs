@@ -72,7 +72,10 @@
 	"block.extendedgears.shaftless_warped_cogwheel": "Безвальная Искажённая Шестерня",
 	"block.extendedgears.steel_cogwheel": "Стальная Шестерня",
 	"block.extendedgears.warped_cogwheel": "Искажённая Шестерня",
-
+	"block:extendedgears:half_shaft_cogwheel":"Полуосевая Шестерня",
+	"block:extendedgears:large_half_shaft_cogwheel":"Большая Полуосевая Шестерня",
+	"block:extendedgears:shaftless_cogwheel":"Безвальная Шестерня",
+	"block:extendedgears:large_shaftless_cogwheel":"Большая Безвальная Шестерня",
 
 	"_": "->------------------------]  ru_ru  [------------------------<-",
 
