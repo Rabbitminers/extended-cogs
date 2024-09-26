@@ -78,6 +78,23 @@ public class HalfShaftCogwheelBlock extends CogWheelBlock implements CogwheelTyp
     }
 
     @Override
+    public BlockState getRotatedBlockState(BlockState originalState, Direction targetedFace) {
+        if (targetedFace.getAxis() == originalState.getValue(AXIS))
+            return originalState;
+        Direction direction = VoxelShaper
+                .axisAsFace(originalState.getValue(AXIS));
+        if (!originalState.getValue(AXIS_DIRECTION))
+            direction = direction.getOpposite();
+        if (targetedFace.getAxisDirection() == Direction.AxisDirection.POSITIVE)
+            direction = direction.getClockWise(targetedFace.getAxis());
+        else
+            direction = direction.getCounterClockWise(targetedFace.getAxis());
+        return originalState
+                .setValue(AXIS, direction.getAxis())
+                .setValue(AXIS_DIRECTION, direction.getAxisDirection() == Direction.AxisDirection.POSITIVE);
+    }
+
+    @Override
     public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
         return face.getAxis() == state.getValue(AXIS) && face.getAxisDirection() == directionFromValue(state.getValue(AXIS_DIRECTION));
     }
