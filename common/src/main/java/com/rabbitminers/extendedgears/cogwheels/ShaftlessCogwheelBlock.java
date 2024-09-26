@@ -2,7 +2,9 @@ package com.rabbitminers.extendedgears.cogwheels;
 
 import com.rabbitminers.extendedgears.mixin_interface.CogwheelTypeProvider;
 import com.rabbitminers.extendedgears.mixin_interface.IDynamicMaterialBlockEntity;
+import com.rabbitminers.extendedgears.registry.ExtendedCogwheelsBlocks;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.utility.VoxelShaper;
@@ -43,13 +45,28 @@ public class ShaftlessCogwheelBlock extends CogWheelBlock implements CogwheelTyp
     @Override
     public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
               InteractionHand hand, BlockHitResult ray) {
-        if (player.isShiftKeyDown() || !player.mayBuild())
+        if (!player.mayBuild())
             return InteractionResult.PASS;
-        ItemStack heldItem = player.getItemInHand(hand);
-        if (heldItem.is(AllBlocks.SHAFT.get().asItem()) && !level.isClientSide) {
+        do {
+            if (level.isClientSide)
+                break;
+            BlockState newState;
             boolean isLarge = ICogWheel.isLargeCog(state);
-            BlockState newState = isLarge ? AllBlocks.LARGE_COGWHEEL.getDefaultState()
-                    : AllBlocks.COGWHEEL.getDefaultState();
+            ItemStack heldItem = player.getItemInHand(hand);
+            if (heldItem.is(AllBlocks.SHAFT.get().asItem()) && !player.isShiftKeyDown()) {
+                newState = isLarge ? AllBlocks.LARGE_COGWHEEL.getDefaultState()
+                        : AllBlocks.COGWHEEL.getDefaultState();
+            }
+            else if (heldItem.is(AllItems.ANDESITE_ALLOY.get()) && ray.getDirection().getAxis() == state.getValue(AXIS)) {
+                newState = isLarge ? ExtendedCogwheelsBlocks.LARGE_HALF_SHAFT_COGWHEEL.getDefaultState()
+                        : ExtendedCogwheelsBlocks.HALF_SHAFT_COGWHEEL.getDefaultState();
+                newState = newState.setValue(
+                        HalfShaftCogwheelBlock.AXIS_DIRECTION,
+                        ray.getDirection().getAxisDirection() == Direction.AxisDirection.POSITIVE != player.isShiftKeyDown()
+                );
+            }
+            else
+                break;
             newState = newState.setValue(AXIS, state.getValue(AXIS))
                     .setValue(WATERLOGGED, state.getValue(WATERLOGGED));
             BlockEntity oldBe = level.getBlockEntity(pos);
@@ -64,7 +81,7 @@ public class ShaftlessCogwheelBlock extends CogWheelBlock implements CogwheelTyp
                 return InteractionResult.FAIL;
             newDyn.applyMaterial(material);
             return InteractionResult.SUCCESS;
-        }
+        } while (false);
         return super.use(state, level, pos, player, hand, ray);
     }
 
